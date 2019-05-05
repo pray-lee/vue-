@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Vue示例-双向绑定</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="name" name="" id="" value="">
+      <div>{{name}}</div>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script charset="utf-8">
+      console.log(Vue)
+      new Vue({
+        el: '#app',
+        data: {
+          name: ''
+        }
+      })
+    </script>
+  </body>
+</html>
