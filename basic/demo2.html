@@ -5,7 +5,7 @@
 </head>
 <body>
   <div id="app">
-    {{date}}
+    {{date | formatDate}}
     <!--v-pre是不把花括号的内容转意-->
     <div v-pre>{{haha}}</div>
   </div>
@@ -25,6 +25,13 @@
       beforeDestroy: function () {
         if(this.timer){
           clearInterval(this.timer)
+        }
+      },
+      // 过滤器添加
+      filters: {
+        formatDate: function (value) {
+          console.log(value)
+          return 111
         }
       }
     })
