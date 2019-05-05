@@ -9,6 +9,8 @@
     <div id="app">
       <input type="text" v-model="name" name="" id="" value="">
       <div>{{name}}</div>
+      <span id="" v-once>{{name1}}</span>
+      <span id="" v-once>{{name1}}</span>
     </div>
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <script charset="utf-8">
@@ -16,7 +18,12 @@
       var app = new Vue({
         el: '#app',
         data: {
-          name: ''
+          name: '',
+          name1: 'v-once test'
+        },
+        mounted: function () {
+          this.name1 = 'v-once again'
+          这里再修改name1,被v-once标记过得元素或者组件就不会再更新了。
         }
       })
     </script>
