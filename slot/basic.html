@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slot</title>
+</head>
+<body>
+<div id="app">
+   <global-component>
+       <p>{{ content }}</p>
+       <template v-slot:header>
+          <p>im header from parent component new</p>
+       </template>
+       <template v-slot:footer>
+           <p>im footer from parent component new</p>
+       </template>
+   </global-component>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    Vue.component('global-component', {
+      template: `<div>
+                    全局组件
+                    <slot>
+                        <p>如果父组件没有内容，我就是默认的内容</p>
+                    </slot>
+                    <slot name="header"><p>header</p></slot>
+                    <slot name="footer"><p>footer</p></slot>
+                 </div>`,
+      mounted () {
+        // 访问插槽分发的内容
+        console.log(this.$slots)
+      }
+    })
+    let app = new Vue({
+      el: '#app',
+      data: {
+        content: '这是父组件的内容'
+      }
+    })
+</script>
+</body>
+</html>

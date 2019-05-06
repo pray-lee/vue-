@@ -10,19 +10,26 @@
 <body>
 <div id="app">
     <input type="text" v-model="parentMessage">
-    <global-component :message="parentMessage"></global-component>
+    <p ref="p"></p>
+    <global-component ref="child" :message="parentMessage"></global-component>
 </div>
 <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
 <script>
     <!--注册一个全局组件-->
     Vue.component('global-component', {
       props: ['message'],
-      template: '<div>received value is <b>{{ message }}</b></div>'
+      template: '<div>received value is <b>{{ message }}</b></div>',
+      mounted() {
+        console.log(this.$parent) // app
+      }
     })
     let app = new Vue({
       el: '#app',
       data:{
         parentMessage: '这是父组件的数据'
+      },
+      mounted () {
+        console.log(this.$refs)
       }
     })
 </script>
