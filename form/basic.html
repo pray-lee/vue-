@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form-basic</title>
+</head>
+<body>
+<div id="app">
+    <section id="static-value">
+        <h1 style="font-size:36px;color:red">静态的值</h1>
+        <h2>text</h2>
+        <input type="text" v-model="content">
+        <p>输入的内容是：{{ content }}</p>
+        <hr>
+        <h2>textarea</h2>
+        <textarea v-model="textareaContent" name="" id="" cols="30" rows="10"></textarea>
+        <p>输入的内容是：{{ textareaContent }}</p>
+        <p style="white-space: pre">{{ textareaContent }}</p>
+        <hr>
+        <h2>radio</h2>
+        <input type="radio" v-model="picked" value="1">
+        <input type="radio" v-model="picked" value="2">
+        <input type="radio" v-model="picked" value="3">
+        <p>选择的选项是：{{ picked }}</p>
+        <hr>
+        <h2>checkbox</h2>
+        <input type="checkbox" v-model="isChecked" value="1">
+        <input type="checkbox" v-model="isChecked" value="2">
+        <input type="checkbox" v-model="isChecked" value="3">
+        <p>选择的项是：{{ isChecked }}</p>
+        <hr>
+        <h2>select</h2>
+        <select v-model="selected" name="" id="">
+            <option value="0">请选择</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <p>选择的项是：{{ selected }}</p>
+    </section>
+    <section id="dynamic-value">
+        <h1 style="font-size:36px;color:red">绑定动态值</h1>
+        <h2>radio</h2>
+        <input type="radio" v-model="picked1" :value="pickedValue">
+        <p>{{ picked1 }} --- {{ pickedValue }}</p>
+        选中时，picked1 === pickedValue
+        <hr>
+        <h2>checkbox</h2>
+        <input type="checkbox" v-model="toggle" :true-value="isCheckedValue" :false-value="isNotCheckedValue">
+        <p>{{ toggle }}</p>
+        <p>{{ isCheckedValue }}</p>
+        <p>{{ isNotCheckedValue }}</p>
+        当选中时，toggle === isCheckedValue,未勾选时，toggle === isNotCheckedValue
+        <hr>
+        <h2>select</h2>
+        <select v-model="dynamicSelected" name="" id="">
+            <option value="0">请选择</option>
+            <option :value="{number: 123}">123</option>
+        </select>
+        <p>
+            选中的内容为：{{dynamicSelected.number}}<br />
+            当选中时，app.dynamicSelected, app.dynamicSelected.number === 123
+        </p>
+    </section>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        content: '',
+        textareaContent: '',
+        picked: '3',
+        picked1: '1',
+        pickedValue: '123',
+        toggle: 'a',
+        isChecked: [],
+        isCheckedValue: 'a',
+        isNotCheckedValue: 'b',
+        selected: 2,
+        dynamicSelected: 0
+      },
+      watch: {
+        picked () {
+          console.log(this.picked)
+        },
+        isChecked () {
+          console.log(this.isChecked)
+        },
+        selected () {
+          console.log(this.selected)
+        }
+      }
+    })
+</script>
+</body>
+</html>
