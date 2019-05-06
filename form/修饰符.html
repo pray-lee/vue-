@@ -8,12 +8,33 @@
     <title>修饰符</title>
 </head>
 <body>
-<div id="app"></div>
+<div id="app">
+    <!--lazy 把input转成change-->
+    <h1>修饰符</h1>
+    <h2>lazy</h2>
+    <input type="text" v-model.lazy="message">
+    <p>{{ message }}</p>
+    <hr>
+    <h2>number</h2>
+    <!--number把字符串转成数字-->
+    <input type="number" v-model.number="num">
+    <p>{{ num }}</p>
+    <hr>
+    <h2>trim</h2>
+    <!--trim去掉收尾空格-->
+    <input type="text" v-model.trim="trim">
+    <p>{{ trim }}</p>
+</div>
 <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
 <script>
+    // v-model修饰符，用于控制数据同步的时机
     let app = new Vue({
       el: '#app',
-      data: {}
+      data: {
+        message: '',
+        num: 1,
+        trim: '',
+      }
     })
 </script>
 </body>

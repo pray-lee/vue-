@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件详解</title>
+</head>
+<body>
+<div id="app">
+    <h2>这是一个全局组件,不用在vue实例上挂载，直接可以使用</h2>
+    <global-component></global-component>
+    <h2>这是局部组件，本质就是个普通对象</h2>
+    <local-component></local-component>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+  // 全局组件
+  Vue.component('global-component', {
+    //options
+    template: '<div>This is a global component</div>'
+  })
+
+  // 局部组件
+  var LocalComponent = {
+    template: '<div>This is a local component</div>'
+  }
+  let app = new Vue({
+    el: '#app',
+    data: {
+
+    },
+    components: {
+      LocalComponent
+    }
+  })
+</script>
+</body>
+</html>
