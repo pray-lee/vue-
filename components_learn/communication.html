@@ -9,6 +9,7 @@
 </head>
 <body>
 <div id="app">
+    <input type="text" v-model="parentMessage">
     <global-component :message="parentMessage"></global-component>
 </div>
 <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
