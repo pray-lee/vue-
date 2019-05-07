@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义指令</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    // 注册全局指令
+    Vue.directive('focus', {
+      // 指令选项
+      // bind: 只调用一次，指令第一次绑定到元素时调用
+      // inserted: 被绑定元素插入父节点时调用
+      // update: 被绑定元素所在的模版更新时调用
+      // componentUpdated: 完成一次更新周期时调用
+      // unbind: 只调用一次，指令与元素解绑时调用
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+
+      },
+      // 注册局部指令
+      directives: {
+        focus: {
+          //指令选项
+        }
+      }
+    })
+</script>
+</body>
+</html>

@@ -51,3 +51,6 @@
 
 ---
 #### `v-slot` 只能添加在template标签上
+
+---
+#### `virtual dom`本质是一个javascript对象,他是基于javascript计算的，当状态发生变化时，他会进行diff运算，来更新只需要被替换的dom

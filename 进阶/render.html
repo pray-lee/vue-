@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>render函数</title>
+</head>
+<body>
+<div id="app">
+    <my-component></my-component>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    Vue.component('my-component', {
+      render: function (createElement) {
+        // createElement构成了Vue Virtual Dom的模版
+        // 它有三个参数
+        return createElement(
+          // {String | Object | Function}
+          // 一个Html标签，一个组件选项，或者一个函数,如果是函数，必须反悔上面其中一个
+          'div',
+
+          // {Object} 一个对应属性的数据对象，可选,可以在template中使用
+          {},
+
+          // {String | Array } 子节点(VNodes)，可选
+          [
+            createElement('h1', 'hellow virtual dom!'),
+            // createElement(MyComponent, {
+            //   props: {
+            //     someProps: 'foo'
+            //   },
+              // class:{
+              //   foo: true,
+              //   bar: false
+              // },
+              // style: {
+              //   color:'red',
+              //   fontSize: '14px',
+              // },
+              // attrs: {
+              //   id: 'foo'
+              // },
+              // // dom属性
+              // domProps: {
+              //   innerHTML: 'baz'
+              // },
+              // // 自定义事件监听器
+              // on: {
+              //   'click': this.handleClick
+              // },
+              // // 监听原生事件
+              // nativeOn: {
+              //   click: this.nativeClickHandler
+              // },
+              // // 自定义指令
+              // directives: [
+              //   {
+              //     name: 'hahaha',
+              //     value: 2,
+              //     expression: '1+1',
+              //     arg: 'foo',
+              //     modifiers: {
+              //       bar: true
+              //     }
+              //   }
+              // ]
+            // }),
+            'bar'
+          ]
+        )
+      }
+    })
+    var app = new Vue({
+      el: '#app'
+    })
+</script>
+</body>
+</html>
