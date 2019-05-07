@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归组件</title>
+</head>
+<body>
+<div id="app">
+<child-component :count="1"></child-component>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    // 给组建设置一个name,就可以递归调用了
+    Vue.component('child-component', {
+      name: 'child-component',
+      props: {
+        count: {
+          type: Number,
+          default: 1
+        }
+      },
+      template: `
+           <div class="component-child">1
+               <child-component :count="count+1" v-if="count < 3"></child-component>
+           </div>
+      `
+    })
+    var app = new Vue({
+      el: '#app',
+      data: {
+
+      }
+    })
+</script>
+</body>
+</html>
